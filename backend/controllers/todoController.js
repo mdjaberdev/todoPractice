@@ -40,17 +40,11 @@ const deleteTodosController = async (req, res) => {
   });
 };
 const updateTodosController = async (req, res) => {
-  
   const { id } = req.params;
- let updateData = { ...req.body };
- if (req.file) {
-   updateData.path = req.file.path;
- }
- const updateTask = await Todo.findByIdAndUpdate(id, updateData, { new: true });
+  const updateTask = await Todo.findByIdAndUpdate({ _id: id }, req.body);
   res.send({
     success: true,
     message: "Task Updated",
-
   });
 };
 
