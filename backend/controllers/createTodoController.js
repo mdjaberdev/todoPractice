@@ -2,7 +2,6 @@ const Todo = require("../models/userModel");
 const createTodoController = async (req, res) => {
   try {
     const { task, status, priority } = req.body;
-
     if (!task || !priority || !status) {
       return res.status(400).json({
         success: false,

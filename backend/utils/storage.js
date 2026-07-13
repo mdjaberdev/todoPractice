@@ -10,4 +10,4 @@ const storage = multer.diskStorage({
   },
 });
 
-mudule.exports = storage;
+module.exports = storage;
