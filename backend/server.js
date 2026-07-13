@@ -3,13 +3,11 @@ const express = require("express");
 var cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
-const {
-  todoController,
-  allTodosGetController,
-  deleteTodosController,
-  updateTodosController,
-} = require("./controllers/todoController");
 const multer = require("multer");
+const createTodoController = require("../backend/controllers/createTodoController");
+const allTodoController = require("../backend/controllers/allTodoController");
+const deleteTodoController = require("../backend/controllers/deleteTodoController");
+const updateTodoController = require("../backend/controllers/updateTodoController");
 
 app.use(express.json());
 app.use(cors());
@@ -35,10 +33,10 @@ mongoose
     console.log("DataBase Connected");
   });
 
-app.post("/todo",upload.single("image") ,todoController);
-app.get("/allTodosGet", allTodosGetController);
-app.delete("/deleteTodos/:id", deleteTodosController);
-app.post("/updateTask/:id",upload.single("image"), updateTodosController);
+app.post("/todo", upload.single("image"), createTodoController);
+app.get("/allTodosGet", allTodoController);
+app.delete("/deleteTodos/:id", deleteTodoController);
+app.post("/updateTask/:id", upload.single("image"), updateTodoController);
 
 app.listen(5000, () => {
   console.log("Server is Running 5000 port");
