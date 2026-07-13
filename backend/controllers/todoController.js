@@ -22,14 +22,14 @@ const todoController = async (req, res) => {
   });
 };
 
-const allTodosGetController = async (req, res) => {
-  const data = await Todo.find({});
-  res.status(200).send({
-    success: true,
-    message: "All Task ",
-    data: data,
-  });
-};
+// const allTodosGetController = async (req, res) => {
+//   const data = await Todo.find({});
+//   res.status(200).send({
+//     success: true,
+//     message: "All Task ",
+//     data: data,
+//   });
+// };
 
 const deleteTodosController = async (req, res) => {
   const { id } = req.params;
