@@ -11,12 +11,7 @@ const { deleteTodoController } = require("./controllers/deleteTodoController");
 const { updateTodoController } = require("./controllers/updateTodoController");
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
-app.use(
-  cors({
-    origin: "https://todo-practice-eta.vercel.app", 
-    credentials: true,
-  }),
-);
+app.use(cors());
 
 const upload = multer({ storage: storage });
 

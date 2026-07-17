@@ -38,9 +38,14 @@ function App() {
     const status = formData.get("status");
     const image = formData.get("image");
     console.log(image);
-    const todoDatas = await axios.post("http://localhost:5000/todo", formData);
+    const todoDatas = await axios.post(
+      "https://todopractice-z1oc.onrender.com/createTodo",
+      formData,
+    );
     setInfo(todoDatas.data);
-    const allData = await axios.get("http://localhost:5000/allTodosGet");
+    const allData = await axios.get(
+      "https://todopractice-z1oc.onrender.com/allTodo",
+    );
     setData(allData.data.data);
     setTask("");
     setPriority("");
@@ -65,7 +70,9 @@ function App() {
 
   useEffect(() => {
     async function allDatas() {
-      const allData = await axios.get("http://localhost:5000/allTodosGet");
+      const allData = await axios.get(
+        "https://todopractice-z1oc.onrender.com/allTodo",
+      );
       setData(allData.data.data);
     }
     allDatas();
@@ -74,10 +81,12 @@ function App() {
   // DeleteFunction
   const handleDelete = async (id) => {
     const deleteData = await axios.delete(
-      `http://localhost:5000/deleteTodos/${id}`,
+      `https://todopractice-z1oc.onrender.com/deleteTodo/${id}`,
     );
     console.log(deleteData);
-    const allData = await axios.get("http://localhost:5000/allTodosGet");
+    const allData = await axios.get(
+      "https://todopractice-z1oc.onrender.com/allTodo",
+    );
     setData(allData.data.data);
   };
 
@@ -93,11 +102,16 @@ function App() {
 
   // UpdateFunction
   const handleUpdate = async () => {
-    const data = await axios.post(`http://localhost:5000/updateTask/${id}`, {
-      task: task,
-      priority: priority,
-    });
-    const allData = await axios.get("http://localhost:5000/allTodosGet");
+    const data = await axios.post(
+      `https://todopractice-z1oc.onrender.com/updateTodo/${id}`,
+      {
+        task: task,
+        priority: priority,
+      },
+    );
+    const allData = await axios.get(
+      "https://todopractice-z1oc.onrender.com/allTodo",
+    );
     setData(allData.data.data);
     setTask("");
     setPriority("");
