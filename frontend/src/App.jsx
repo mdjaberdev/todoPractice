@@ -202,7 +202,7 @@ function App() {
                 className="flex flex-col p-4 bg-slate-800/50 border border-slate-800 hover:border-slate-700/80 rounded-xl gap-3 transition-all"
               >
                 <img
-                  src={`http://localhost:5000/${item.path}`}
+                  src={`https://todopractice-z1oc.onrender.com/${item.path}`}
                   alt="Todo Asset"
                 />
 
